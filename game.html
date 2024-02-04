@@ -7,8 +7,73 @@
 </head>
 <body>
     <script>
-        console.log('Hello Wolrd');
+        /*
+        create a prompt that asks user for their selection (rock, paper, or scissors)
+        show what scenario will result in a victory prompt for user
+        show scenarios what determine win for computer
+        show scenario prompt for tie 
+        create a funciton for computerseleciton randomizzer between rock paper and scissors
         
+         
+     */
+   
+   function getplayerSelection() {
+    const playerselection = prompt ('Please enter rock, paper, or scissors').toLowerCase();
+    if (playerselection === 'rock' || playerselection === 'paper' || playerselection === 'scissors'){
+        return playerselection;
+     } else {
+        console.log ('Invalid response. Please enter rock, paper. or scissors');
+    return getplayerSelection();
+
+     }
+   }
+
+   function getComputerChoice() {
+    const choices = ['rock', 'paper', 'scissors'];
+    const comprandom = Math.floor(Math.random()*3);
+    return choices[comprandom];
+   }
+   
+   function determineWinner(playerselection,computerselection) {
+    if (playerselection === computerselection) {
+        return "It's a tie!"; 
+   } else if (
+    (playerselection === 'rock' && computerselection === 'scissors') || 
+   (playerselection === 'paper' && computerselection === 'rock') ||
+   (playerselection === 'scissors' && computerselection === 'paper')  
+   
+   ) { 
+    return "You Win!";
+   } else {
+    return "You Lose!";
+   }
+}
+
+function playRound() {
+
+const playerselection = getplayerSelection();
+const computerselection = getComputerChoice();
+
+console.log(`Your choice: ${playerselection}`);
+console.log(`Computer's choice: ${computerselection}`);
+
+const result = determineWinner(playerselection, computerselection);
+console.log(result);
+}
+//playRound();
+    
+function playgame() {
+    console.log (playRound());
+    console.log (playRound());
+    console.log (playRound());
+    console.log (playRound());
+    console.log (playRound());
+
+
+}
+playgame();
+    
+    
     </script>
 </body>
 </html>
